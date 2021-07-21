@@ -4,13 +4,13 @@ import scala.io.StdIn._
 // Creating object
 object simpleBank
 {
-	//variables
+	//variables storing starting values
 	var userName: String = "user1"
 	var passWord: String = "password1"
 	var accountMoney: Double = 1000.00
 	var accountStatus: String = "Normal"
 	var action: String = ""
-	// Methods for depositing and withdrawing money
+	// Method for depositing money
 	def deposit(x:Double) : Double = 
 	{
 		print("Enter your deposit amount: ")
@@ -18,6 +18,7 @@ object simpleBank
 		var netAmount = x + depositAmount
 		return netAmount
 	} 
+	//Method for withdrawing money, asking again if money to be withdrawn is greater than money in account
 	def withdraw(x:Double) : Double =
 	{
 		print("Enter your withdrawal amount: ")
@@ -34,7 +35,7 @@ object simpleBank
 			}
 		
 	}
-	// Main method
+	// Main method, asks for username and password, runs again if wrong username and password, and asks for actions to take, ends if asked
 	def main(args: Array[String])
 	{
 		println("Please enter your username and password: ")
