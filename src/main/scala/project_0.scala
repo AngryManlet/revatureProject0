@@ -9,6 +9,7 @@ object simpleBank
 	var passWord: String = "password1"
 	var accountMoney: Double = 1000.00
 	var accountStatus: String = "Normal"
+	var action: String = ""
 	// Methods for depositing and withdrawing money
 	def deposit(x:Double) : Double = 
 	{
@@ -42,35 +43,37 @@ object simpleBank
 		println("password: ")
 		var enteredPassword = readLine()
 		if (enteredUserName == userName || enteredPassword == passWord){
-		println("How may we help you today? ")
-		var action = readLine("Please enter deposit, withdraw, or end ")
-		if (action == "deposit")
-			{
-				accountMoney = deposit(accountMoney)
-			}
-		else if (action == "withdraw")
-			{
-				accountMoney = withdraw(accountMoney)
-			}
-		else if (action == "end")
-			{
-				println("Thank you, have a good day!")
-			}
-		else
-			{
-				println("Please try again.")
-			}
-		if (accountMoney > 1000000)
-			{
-				accountStatus = "Gold"
-			}
-		else 
-			{
-				accountStatus = "Normal"
-			}
-		println("Money in account: " + accountMoney)
-		println("Account Status: " + accountStatus)
+		do{
+			println("How may we help you today? ")
+			action = readLine("Please enter deposit, withdraw, or end ")
+			if (action == "deposit")
+				{
+					accountMoney = deposit(accountMoney)
+				}
+			else if (action == "withdraw")
+				{
+					accountMoney = withdraw(accountMoney)
+				}
+			else if (action == "end")
+				{
+					println("Thank you, have a good day!")
+				}
+			else
+				{
+					println("Please try again.")
+				}
+			if (accountMoney > 1000000)
+				{
+					accountStatus = "Gold"
+				}
+			else 
+				{
+					accountStatus = "Normal"
+				}
+			println("Money in account: " + accountMoney)
+			println("Account Status: " + accountStatus)
 		}
+		while (action != "end")}
 		else
 			{
 				println("Incorrect username or password. Please try again.")
